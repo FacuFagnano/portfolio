@@ -1,0 +1,106 @@
+body {
+    background-color: #eeeeee;
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 55px;
+    font-weight: 800;
+    color: #2d2d2d;
+}
+a{
+    color: black;
+    font-weight: bold;
+}
+#contacto h2{
+    font-size: 30px;
+    line-height: 40px;
+    color: #2d2d2d;
+    font-weight: 700;
+}
+#contacto h2 a {
+    color: #2d2d2d;
+    text-decoration: underline;
+}
+#contacto h2 a:hover {
+    color: black;
+    text-decoration: underline;
+}
+#proyectos h2{
+    font-size: 22px;
+    line-height: 40px;
+    color: #2d2d2d;
+}
+#clientes{
+    height: 475px;
+}
+nav {
+    padding: 15px 0 0 0 !important;
+}
+.navbar {
+    padding: 15px 0 0 0;
+}
+.navbar .active {
+    text-decoration: underline;
+    font-weight: bold;
+    text-underline-position: under;
+
+}
+.nav-link {
+    color: #4B4B4B;
+    text-decoration: none;
+    font-size: 20px;
+    width: 250px;
+    text-align: center;
+}
+.nav-link:hover {
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 250px;
+    text-align: center;
+}
+.navbar-toggler-icon {
+    color: black;   
+    padding-top: 5px;
+}
+.form-control {
+    background-color: #eeeeee ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #777a7b;
+}
+.form-control:focus {
+    background-color: #eeeeee ;
+}
+textarea {
+    resize: none;  
+}
+.btn {
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    border-radius: 5%;
+    width: 120px;
+    height: 35px;
+}
+.btn:hover {
+    background-color: black;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 5%;
+    width: 120px;
+    height: 35px;
+}
+footer a {
+    color: #2D2D2D;
+}
+footer a:hover {
+    color: black;
+}
+footer i {
+    font-size: 50px;
+    color: #2D2D2D;
+}
+footer i:hover {
+    color: black;
+}
