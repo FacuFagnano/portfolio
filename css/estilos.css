@@ -2,48 +2,17 @@ body {
     background-color: #eeeeee;
     font-family: 'Montserrat', sans-serif;
 }
-h1 {
-    font-size: 55px;
-    font-weight: 800;
-    color: #2d2d2d;
-}
-a{
-    color: black;
-    font-weight: bold;
-}
-#contacto h2{
-    font-size: 30px;
-    line-height: 40px;
-    color: #2d2d2d;
-    font-weight: 700;
-}
-#contacto h2 a {
-    color: #2d2d2d;
-    text-decoration: underline;
-}
-#contacto h2 a:hover {
-    color: black;
-    text-decoration: underline;
-}
-#proyectos h2{
-    font-size: 22px;
-    line-height: 40px;
-    color: #2d2d2d;
-}
-#clientes{
-    height: 475px;
-}
 nav {
     padding: 15px 0 0 0 !important;
 }
 .navbar {
     padding: 15px 0 0 0;
+    text-align: center;
 }
 .navbar .active {
     text-decoration: underline;
     font-weight: bold;
     text-underline-position: under;
-
 }
 .nav-link {
     color: #4B4B4B;
@@ -63,15 +32,108 @@ nav {
     color: black;   
     padding-top: 5px;
 }
+button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 20px;
+}
+h1 {
+    font-size: 55px;
+    font-weight: 800;
+    color: #2d2d2d;
+}
+a{
+    color: black;
+    font-weight: bold;
+}
+#home {
+    background-image: url(../images/fondo01.png);
+    background-size: 100%;
+    background-repeat: repeat;
+}
+#index {
+    height: 77vh;
+}
+#contacto h2{
+    font-size: 30px;
+    line-height: 40px;
+    color: #2d2d2d;
+    font-weight: 700;
+}
+#contacto h2 a {
+    color: #2d2d2d;
+    text-decoration: underline;
+}
+#contacto h2 a:hover {
+    color: black;
+    text-decoration: underline;
+}
 .form-control {
     background-color: #eeeeee ;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #777a7b;
+    border-radius: 0%;
 }
 .form-control:focus {
     background-color: #eeeeee ;
+}
+#proyectos h2{
+    font-size: 22px;
+    line-height: 40px;
+    color: #2d2d2d;
+}
+.clientes{
+    min-height: 475px;
+}
+#sobre-mi h2{
+    font-size: 20px;
+    font-weight: bolder;
+}
+#sobre-mi img{
+    border-radius: 52%;
+    width: 245px;
+    border: #ffffff54 8px solid;
+}
+.icon {
+    font-size: 35px;
+    background-color: #2D2D2D;
+    color: white;
+    text-align: center;
+    width: 100px;
+    height: 70px;
+    padding: 10px 0 ;
+}
+.conocimientos {
+    min-height: 260px;
+}
+.experiencias{
+    background-color: #2D2D2D;
+    color: white;
+}
+.experiencias img{
+    width: 100PX;
+    background-color: white;
+    height: 80px;
+}
+.experiencias h6{
+    font-weight: bold;
+}
+#logo {
+    text-align: center;
+}
+.experiencias a{
+    color: white;
+}
+.experiencias a:hover{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+#underline{
+    border-bottom: 1px gray solid;
 }
 textarea {
     resize: none;  
@@ -79,17 +141,16 @@ textarea {
 .btn {
     background-color: #2D2D2D;
     color: #FFFFFF;
-    border-radius: 5%;
-    width: 120px;
-    height: 35px;
+    border-radius: 0%;
 }
 .btn:hover {
     background-color: black;
     font-weight: bold;
     color: #FFFFFF;
-    border-radius: 5%;
-    width: 120px;
-    height: 35px;
+    border-radius: 0%;
+}
+footer{
+    background-color: white;
 }
 footer a {
     color: #2D2D2D;
@@ -103,4 +164,70 @@ footer i {
 }
 footer i:hover {
     color: black;
+}
+#footmb {
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    #index h1 {
+        font-size: 42px;
+    }
+    #proyectos h1 {
+        font-size: 45px;
+    }
+    #proyectos h2{
+        font-size: 17px;
+        line-height: 40px;
+        color: #2d2d2d;
+        line-height: normal;
+    }
+    #contacto h1{
+        font-size: 38px;
+    }
+    #contacto h2{
+        font-size: 20px;
+        line-height: 40px;
+        color: #2d2d2d;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .navbar{
+        background-color: white;
+        height: 60px;
+    }
+    .navbar .active {
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .navbar-nav{
+        background-color: #1e1e1e;
+        z-index: 1000;
+        height: 81vh !important;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+    }
+    .nav-item {
+        border-bottom: 1px solid white;
+    }
+    .nav-link{
+        color: white;
+        font-weight: normal;
+    }
+    .nav-link:hover {
+        color: white;
+        font-weight: bold;
+}
+    footer{
+        display: none;
+    }
+    #footmb{
+        position: fixed;
+        display: block;
+        bottom: 0px;
+        width: 100%;
+    }
+    #footmb i{
+        font-size: 35px;
+    }
 }

@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome/css/fontawesome.min.css">
@@ -17,45 +16,25 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm">
+        <?php include_once("menu.php"); ?>
+    </nav>
     <div class="container">
         <section id="proyectos">
-            <nav class="navbar navbar-expand-md">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon navbar-toggler-icon fa fa-bars"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="sobre-mi.html">SOBRE MÍ</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="proyecto.html">PROYECTOS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">CONTACTO</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
             <div class="row pt-5">
                 <div class="col-12">
                     <h1>Mis proyectos</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-2">
                     <h2>Estos son algunos de los trabajos que he realizado:
                     </h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6">
-                    <div class="bg-white" id="clientes">
+                <div class="col-12 col-sm-6 mt-3">
+                    <div class="bg-white clientes">
                         <img src="images/abmclientes.png" alt="AMB Clientes" class="img-fluid">
                         <div class="row mx-2 mt-1">
                             <div class="col-12">
@@ -74,8 +53,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6">
-                    <div class="bg-white" id="clientes">
+                <div class="col-12 col-sm-6 mt-3">
+                    <div class="bg-white clientes">
                         <img src="images/abmventas.png" alt="AMB Ventas" class="img-fluid">
                         <div class="row mx-2 mt-1">
                             <div class="col-12">
@@ -97,7 +76,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-12 col-sm-6">
-                    <div class="bg-white" id="clientes">
+                    <div class="bg-white clientes">
                         <img src="images/sistema-admin.png" alt="Proyecto integrador" class="img-fluid">
                         <div class="row mx-2 mt-1">
                             <div class="col-12">
@@ -118,23 +97,16 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <footer>
-            <div class="row py-5">
-                <div class="col-12 col-sm-4 text-left">
-                    <a href="index.html">© Todos los derechos reservados <br>2020</a>
-                </div>
-                <div class="col-12 col-sm-4 text-center"><a
-                        href="https://api.whatsapp.com/send?phone=541154662424&amp;text=Hola" target="_blank"><i
-                            class="fab fa-whatsapp-square"></i></a>
-                    <a href="https://ar.linkedin.com/in/facundo-dami%C3%A1n-fagnano-10462a175" target="_blank"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/FacuFagnano" target="_blank"><i class="fab fa-github-square"></i></a>
-                </div>
-                <div class="col-12 col-sm-4 text-right">Patrocinado por <br>
+            <div class="row d-sm-none">
+                <div class="col-12 text-right mt-4 pb-5">Patrocinado por <br>
                     <a href="http://depcsuite.com" target="_blank">DePC Suite</a>
                 </div>
             </div>
-        </footer>
+        </section>
+    </div>
+    <div>
+        <?php include_once("footer.php") ?>
     </div>
 </body>
+
+</html>
