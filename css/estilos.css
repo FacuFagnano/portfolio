@@ -53,7 +53,7 @@ a{
     background-repeat: repeat;
 }
 #index {
-    height: 77vh;
+    height: 74vh;
 }
 #contacto h2{
     font-size: 30px;
@@ -79,6 +79,9 @@ a{
 }
 .form-control:focus {
     background-color: #eeeeee ;
+}
+#confirmacion-correo {
+    height: 74vh;
 }
 #proyectos h2{
     font-size: 22px;

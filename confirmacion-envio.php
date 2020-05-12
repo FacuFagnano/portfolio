@@ -24,7 +24,7 @@ $pg = "contacto";
         <?php include_once("menu.php"); ?>
     </nav>
     <div class="container">
-        <section>
+        <section id="confirmacion-correo">
             <div class="row">
                 <div class="col-12 my-4 mt-sm-5 pt-sm-5">
                     <h1>¡Gracias por escribirme!</h1>

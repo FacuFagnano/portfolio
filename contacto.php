@@ -1,9 +1,21 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $pg = "contacto";
 
 
 include_once("phpmailer/src/PHPMailer.php");
 include_once("phpmailer/src/SMTP.php");
+
+function guardarCorreo($correo)
+{
+    $archivo = fopen("mails.txt", "a+");
+    fwrite($archivo, $correo . "\n");
+    fclose($archivo);
+}
+
 
 if ($_POST) {
 
@@ -11,6 +23,9 @@ if ($_POST) {
     $correo = $_POST["txtCorreo"];
     $asunto = $_POST["txtAsunto"];
     $mensaje = $_POST["txtMensaje"];
+
+    $correo = $_POST["txtCorreo"];
+    guardarCorreo($correo);
 
     if ($nombre != "" && $correo != "") {
         $mail = new PHPMailer();
@@ -36,9 +51,9 @@ if ($_POST) {
         $mail->addBCC("otrocorreo@gmail.com"); //Copia oculta
         $mail->Subject = utf8_decode("Contacto página Web");
         $mail->Body = "Recibimos tu consulta, te responderemos a la brevedad.";
-        if (!$mail->Send()) {
-            $msg = "Error al enviar el correo, intente nuevamente mas tarde.";
-        }
+        //if (!$mail->Send()) {
+        //    $msg = "Error al enviar el correo, intente nuevamente mas tarde.";
+       // }
         $mail->ClearAllRecipients(); //Borra los destinatarios
 
         //Envía ahora un correo a nosotros con los datos de la persona
@@ -46,19 +61,16 @@ if ($_POST) {
         $mail->Subject = utf8_decode("Recibiste un mensaje desde tu página Web");
         $mail->Body = "Te escribio $nombre cuyo correo es $correo, con el asunto $asunto 
         y el siguiente mensaje:<br><br>$mensaje";
-        if ($mail->Send()) { /* Si fue enviado correctamente redirecciona */
+        //if ($mail->Send()) { /* Si fue enviado correctamente redirecciona */
             header('Location: confirmacion-envio.php');
-        } else {
+       // } else {
             $msg = "Error al enviar el correo, intente nuevamente mas tarde.";
-        }
+//}
     } else {
         $msg = "Complete todos los campos";
     }
+
 }
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -98,7 +110,7 @@ if ($_POST) {
             </div>
             <div class="row pt-5">
                 <div class="col-12 col-sm-10">
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="row">
                             <div class="col-12 col-sm-6 form-group">
                                 <input type="text" name="txtNombre" id="txtNombre" class="form-control" required placeholder="NOMBRE">
@@ -107,7 +119,7 @@ if ($_POST) {
                                 <input type="email" name="txtCorreo" id="txtCorreo" class="form-control" required placeholder="EMAIL">
                             </div>
                             <div class="col-12 form-group">
-                                <input type="text" name="txtArea" id="txtArea" class="form-control" required placeholder="ASUNTO">
+                                <input type="text" name="txtAsunto" id="txtAsunto" class="form-control" required placeholder="ASUNTO">
                             </div>
                             <div class="col-12 form-group">
                                 <textarea name="txtMensaje" id="txtMensaje" rows="7" class="form-control" placeholder="MENSAJE" required></textarea>
