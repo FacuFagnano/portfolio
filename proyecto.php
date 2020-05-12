@@ -1,3 +1,9 @@
+<?php
+
+$pg = "proyecto";
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
