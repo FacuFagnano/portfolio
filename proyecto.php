@@ -54,7 +54,7 @@ $pg = "proyecto";
                         </div>
                         <div class="row m-2 pt-4">
                             <div class="col-6 pb-3">
-                                <a href="" target="_blank" class="btn">Ver Online</a>
+                                <a href="./nueva-carpeta/index.php" target="_blank" class="btn">Ver Online</a>
                             </div>
                             <div class="col-6 mt-1 text-right">
                                 <a href="https://github.com/" target="_blank">Código Fuente</a>
@@ -74,7 +74,7 @@ $pg = "proyecto";
                         </div>
                         <div class="row m-2">
                             <div class="col-6 pb-3">
-                                <a href="" target="_blank" class="btn">Ver Online</a>
+                                <a href="./login/login.php" target="_blank" class="btn">Ver Online</a>
                             </div>
                             <div class="col-6 mt-1 text-right">
                                 <a href="https://github.com/" target="_blank">Código Fuente</a>

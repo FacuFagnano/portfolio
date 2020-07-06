@@ -28,7 +28,7 @@ $pg = "contacto";
             <div class="row">
                 <div class="col-12 my-4 mt-sm-5 pt-sm-5">
                     <h1>¡Gracias por escribirme!</h1>
-                    <h5>A la brevedad estaré contáctandome con Usd.</H5>
+                    <h5>A la brevedad estaré contactándome con Usd.</H5>
                 </div>
             </div>
         </section>
