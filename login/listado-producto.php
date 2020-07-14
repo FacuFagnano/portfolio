@@ -24,6 +24,7 @@ include_once("header.php");
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Productos</h1>
     <form action method="POST">
+    <div class="col-12 mb-3">
         <div class="row">
             <div class="col-12 mb-3">
                 <a href="producto-formulario.php" class="btn btn-primary mr-2">Nuevo</a>
@@ -39,7 +40,7 @@ include_once("header.php");
             </tr>
             <?php foreach ($array_producto as $item) { ?>
                 <tr>
-                    <td> <img src="archivos/<?php echo $item->imagen ?>" class="img-fluid" alt="Responsive image"> </td>
+                    <td class="w-25"><img src="archivos/<?php echo $item->imagen?>" class="w-50 img-thumbnail"></td>
                     <td><?php echo $item->nombre ?></td>
                     <td><?php echo $item->cantidad ?></td>
                     <td>$<?php echo number_format($item->precio, 2, ",", ".") ?></td>
@@ -48,6 +49,7 @@ include_once("header.php");
                 <?php } ?>
                 </tr>
         </table>
+    </div>
 
 
 </div>

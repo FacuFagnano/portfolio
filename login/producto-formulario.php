@@ -8,13 +8,18 @@ include_once("entidades/producto.php");
 $producto = new Producto();
 $producto->cargarFormulario($_REQUEST);
 
+
 $tipoProducto = new TipoProducto();
 $array_tipo_producto = $tipoProducto->obtenerTodos();
 
-$imagenAnterior = $aProducto[$id]["imagen"];
+
 
 if ($_POST) {
     if (isset($_POST["btnGuardar"])) {
+        $productoAux = new Producto();
+        $productoAux->idproducto = $_GET["id"];
+        $productoAux->obtenerPorId();
+        $imagenAnterior = $productoAux->imagen;
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
             if ($_FILES["txtImagen"]["error"] === UPLOAD_ERR_OK) {
                 $nombreAleatorio = date("Ymdhmsi");
@@ -24,14 +29,14 @@ if ($_POST) {
                 $nombreImagen = $nombreAleatorio . "." . $extension;
                 move_uploaded_file($archivo_tmp, "archivos/$nombreImagen");
             }
-            if ($_FILES["txtImagen"]["error"] === UPLOAD_ERR_OK) {
-                if ($imagenAnterior != "") {
+            if ($_FILES["txtImagen"]["error"] !== UPLOAD_ERR_OK) {
+                $nombreImagen = $imagenAnterior;
+            } else {
+            if ($imagenAnterior != "") {
                     unlink("archivos/$imagenAnterior");
                 }
             }
-            if ($_FILES["txtImagen"]["error"] !== UPLOAD_ERR_OK) {
-                $nombreImagen = $imagenAnterior;
-            }
+            
         $producto->imagen = $nombreImagen;
         $producto->actualizar();
         } else {
