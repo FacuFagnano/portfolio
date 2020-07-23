@@ -39,6 +39,7 @@ if ($_POST) {
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 
+
 </head>
 
 <body id="page-top">
