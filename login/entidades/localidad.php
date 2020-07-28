@@ -27,6 +27,7 @@ class Localidad{
             ORDER BY idlocalidad DESC";
         $resultado = $mysqli->query($sql);
 
+
         while ($fila = $resultado->fetch_assoc()) {
             $aLocalidades[] = array(
                 "idlocalidad" => $fila["idlocalidad"],

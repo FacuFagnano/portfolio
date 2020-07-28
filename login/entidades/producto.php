@@ -159,4 +159,23 @@ class Producto
         $mysqli->close();
         return $aResultado;
     }
+
+    public function obtenerPrecio($idProducto){
+        $preciounitario = "";
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $sql = "SELECT 
+            idproducto,
+            precio
+            FROM productos 
+            WHERE idproducto = $idProducto
+            ORDER BY idproducto DESC";
+        $resultado = $mysqli->query($sql);
+
+
+        while ($fila = $resultado->fetch_assoc()) {
+                $preciounitario = $fila["precio"];
+       
+        }
+        return $preciounitario;
+    }
 }

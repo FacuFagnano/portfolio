@@ -30,7 +30,14 @@ if ($_POST) {
     }
 }
 
-if (isset($_GET["id"]) && $_GET["id"] > 0) {
+
+if(isset($_GET["do"]) && $_GET["do"] == "buscarProducto" && $_GET["id"] && $_GET["id"] > 0) {
+    $idProducto = $_GET["id"];
+    $producto = new Producto();
+    $preciounitario = $producto->obtenerPrecio($idProducto);
+    echo json_encode($preciounitario);
+    exit;
+} else if(isset($_GET["id"]) && $_GET["id"] > 0){
     $venta->obtenerPorId();
 }
 
@@ -77,8 +84,8 @@ include_once("header.php");
                 </select>
             </div>
             <div class="col-6 form-group py-3">
-                <select name="lstProducto" id="lstProdcuto" class="form-control">
-                    <option value="0" disabled selected>Prodcuto</option>
+                <select name="lstProducto" id="lstProducto" onchange="fBuscarPrecio();" class="form-control">
+                    <option value="0" disabled selected>Producto</option>
                     <?php foreach ($array_producto as $item) {
                         if ($venta->fk_idproducto == $item->idproducto) {
                             echo "<option selected value=" . $item->idproducto . "> $item->nombre </option>";
@@ -92,24 +99,50 @@ include_once("header.php");
         <div class="row">
             <div class="col-6 form-group">
                 <label for="txtPreciounitario">Precio unitario:</label>
-                <input type="number" class="form-control" name="txtPreciounitario" id="txtPreciounitario" value="<?php echo $venta->preciounitario ?>" placeholder="Precio Unitario">
+                <input type="text" class="form-control" name="txtPreciounitario" id="txtPreciounitario" value="<?php echo $venta->preciounitario ?>" placeholder="Precio Unitario">
             </div>
             <div class="col-6 form-group">
                 <label for="txtCantidad">Cantidad:</label>
-                <input type="number" required="" class="form-control" name="txtCantidad" id="txtCantidad" value="<?php echo $venta->cantidad ?>" placeholder="Cantidad">
+                <input type="text" required="" class="form-control" name="txtCantidad" id="txtCantidad" onchange="fCalcularTotal();" value="<?php echo $venta->cantidad ?>" placeholder="Cantidad">
             </div>
         </div>
         <div class="row">
             <div class="col-6 form-group">
                 <label for="txtTotal">Total:</label>
-                <input type="number" required="" class="form-control" name="txtTotal" id="txtTotal" value="<?php echo $venta->total ?>" placeholder="Total">
+                <input type="text" required="" class="form-control" name="txtTotal" id="txtTotal" value="<?php echo $venta->total ?>" placeholder="Total">
 
             </div>
         </div>
     </form>
 </div>
 </div>
+<script>
+window.onload = function(){
+    $('#grilla').DataTable();
+}
+function fBuscarPrecio(){
+    var idProducto = $("#lstProducto option:selected").val();
+      $.ajax({
+            type: "GET",
+            url: "venta-formulario.php?do=buscarProducto",
+            data: { id:idProducto },
+            async: true,
+            dataType: "json",
+            success: function (respuesta) {
+                $("#txtPreciounitario").val(respuesta);
+            }
+        });
 
+}
+
+function fCalcularTotal(){
+    var precio = $('#txtPreciounitario').val();
+    var cantidad = $('#txtCantidad').val();
+    var resultado = precio * cantidad;
+    $("#txtTotal").val(resultado);
+    
+  }
+</script>
 <?php
 include_once("footer.php");
 ?>

@@ -18,7 +18,7 @@ class Domicilio{
     }
 
     public function insertar(){
-        $mysql = new mysqli(Constante::BBDD_HOST, Constante::BBDD_USUARIO, Constante::BBDD_CLAVE, Constante::BBDD_NOMBRE);
+        $mysql = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $mysql->query("INSERT INTO domicilios (
             fk_idcliente, 
             fk_tipo, 
@@ -31,7 +31,7 @@ class Domicilio{
     }
 
     public function obtenerFiltrado($idCliente){
-        $mysqli = new mysqli(Constante::BBDD_HOST, Constante::BBDD_USUARIO, Constante::BBDD_CLAVE, Constante::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $request = $_REQUEST;
         $columns = array(
            0 => 'B.nombre',
@@ -81,6 +81,14 @@ class Domicilio{
         return $lstRetorno;
     }
 
+    public function eliminarPorCliente($idCliente){
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $sql = "DELETE FROM domicilios WHERE fk_idcliente = " . $idCliente;
+        if (!$mysqli->query($sql)) {
+            printf("Error en query: %s\n", $mysqli->error . " " . $sql);
+        }
+        $mysqli->close();
+    }
 
 
 }
