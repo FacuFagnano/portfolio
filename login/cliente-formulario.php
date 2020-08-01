@@ -35,6 +35,8 @@ if ($_POST) {
         }
 
     } else if (isset($_POST["btnBorrar"])) {
+        $domicilio = new Domicilio();
+        $domicilio->eliminarPorCliente($cliente->idcliente);
         $cliente->eliminar();
         header("location: cliente-formulario.php");
     }
@@ -122,85 +124,86 @@ include_once("header.php");
             </div>
             <div class="row">
                 <div class="col-2 form-group">
-                    <a>Fecha de Nacimiento:</p>
+                    <label>Fecha de Nacimiento:</label>
                         <input type="date" class="form-control text-center" name="txtFechaNac" id="txtFechaNac" value="<?php echo $cliente->fecha_nac ?>">
                 </div>
             </div>
-        </form>
+        
 
-        <div class="row">
-            <div class="col-12">  
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-table"></i> Domicilios
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDomicilio">Agregar</button>
-                            <!-- Button trigger modal -->
-                            <div class="modal fade" id="modalDomicilio" tabindex="-1" role="dialog" aria-labelledby="modalDomicilioLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalDomicilioLabel">Domicilio</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <label for="lstTipo">Tipo:</label>
-                                            <select name="lstTipo" id="lstTipo" class="form-control">
+            <div class="row">
+                <div class="col-12">  
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-table"></i> Domicilios
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDomicilio">Agregar</button>
+                                <!-- Button trigger modal -->
+                                <div class="modal fade" id="modalDomicilio" tabindex="-1" role="dialog" aria-labelledby="modalDomicilioLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalDomicilioLabel">Domicilio</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label for="lstTipo">Tipo:</label>
+                                                <select name="lstTipo" id="lstTipo" class="form-control">
+                                                        <option value="" selected disabel>Seleccionar</option>
+                                                        <option value="1">Personal</option>
+                                                        <option value="2">Laboral</option>
+                                                        <option value="3">Comercial</option>
+                                                </select><br>
+                                                <label for="lstProvincia">Provincia:</label>
+                                                <select name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad();" class="form-control">
                                                     <option value="" selected disabel>Seleccionar</option>
-                                                    <option value="1">Personal</option>
-                                                    <option value="2">Laboral</option>
-                                                    <option value="3">Comercial</option>
-                                            </select><br>
-                                            <label for="lstProvincia">Provincia:</label>
-                                            <select name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad();" class="form-control">
-                                                <option value="" selected disabel>Seleccionar</option>
-                                                <?php foreach ($array_provincia as $prov) {
-                                                            if ($provincia->idprovincia == $prov->idprovincia) {
-                                                                echo "<option selected value=" . $prov->idprovincia . "> $prov->nombre </option>";
-                                                            } else {
-                                                                echo "<option value=" . $prov->idprovincia . "> $prov->nombre </option>";
-                                                            }
-                                                        }?>
-                                            </select><br>
-                                            <label for="lstLocalidad">Localidad:</label>
-                                            <select name="lstLocalidad" id="lstLocalidad" class="form-control">
-                                                <option value="" selected disabel>Seleccionar</option>
-                                            </select><br>
-                                            <label for="txtDireccion" >Dirección:</label>
-                                            <input type="text" name="txtDireccion" id="txtDireccion" class="form-control">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-primary" onclick="fAgregarDomicilio()">Agregar</button>
+                                                    <?php foreach ($array_provincia as $prov) {
+                                                                if ($provincia->idprovincia == $prov->idprovincia) {
+                                                                    echo "<option selected value=" . $prov->idprovincia . "> $prov->nombre </option>";
+                                                                } else {
+                                                                    echo "<option value=" . $prov->idprovincia . "> $prov->nombre </option>";
+                                                                }
+                                                            }?>
+                                                </select><br>
+                                                <label for="lstLocalidad">Localidad:</label>
+                                                <select name="lstLocalidad" id="lstLocalidad" class="form-control">
+                                                    <option value="" selected disabel>Seleccionar</option>
+                                                </select><br>
+                                                <label for="txtDireccion" >Dirección:</label>
+                                                <input type="text" name="txtDireccion" id="txtDireccion" class="form-control">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" onclick="fAgregarDomicilio()">Agregar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <table id="grilla" class="display" style="width:98%">
-                            <thead>
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Provincia</th>
-                                    <th>Localidad</th>
-                                    <th>Dirección</th>
-                                </tr>
-                            </thead>
-                        </table> 
-                    </div>
-                </div>          
+                        <div class="panel-body">
+                            <table id="grilla" class="display" style="width:98%">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Provincia</th>
+                                        <th>Localidad</th>
+                                        <th>Dirección</th>
+                                    </tr>
+                                </thead>
+                            </table> 
+                        </div>
+                    </div>          
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
 <script>
 window.onload = function(){
-    var idCliente = '<?php echo isset($cliente) && $cliente->idcliente > 0? $cliente->idcliente : 0 ?>';
+    var idCliente = '<?php echo isset($cliente) && $cliente->idcliente > 0? $cliente->idcliente : 0?>';
 
     var dataTable = $('#grilla').DataTable({
         "processing": true,

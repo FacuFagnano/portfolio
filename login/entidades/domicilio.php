@@ -64,7 +64,6 @@ class Domicilio{
         }
         if(isset($request['order']))
         $sql.=" ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
-        print_r($sql);exit;
         $resultado = $mysqli->query($sql);
         $lstRetorno = array();
         while ($fila = $resultado->fetch_assoc()) {
